@@ -1,4 +1,4 @@
-const ClientRepository = require("../data/repository/clientsRepository");
+const ClientRepository = require("../data/repository/ClientRepository");
 
 class ClientServices {
   constructor() {

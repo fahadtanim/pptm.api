@@ -1,4 +1,4 @@
-const Client = require("../../model/client");
+const Client = require("../../model/Client");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 class ClientRepository {
