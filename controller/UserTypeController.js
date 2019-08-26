@@ -1,0 +1,1 @@
+const UserTypeServices = require("../services/UserTypeServices");

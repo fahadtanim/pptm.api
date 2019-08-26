@@ -5,8 +5,6 @@ const bodyParser = require("body-parser");
 
 //SERVICE MODULE
 const ClientServices = require("./services/ClientServices");
-const UserRoleServices = require("./services/UserRoleServices");
-const UserTypeServices = require("./services/UserTypeServices");
 const UserServices = require("./services/UserServices");
 
 //APP CONFIGURATION
@@ -15,98 +13,20 @@ const app = express();
 const PORT = process.env.PORT || app_config.port;
 app.use(bodyParser.json());
 
-//######################################
-//######  CLIENT CONTROLLER ############
 
-//All Clients
-app.get("/api/clients", async (req, res) => {
-  let data = await ClientServices.getClients();
-  res.send(data);
-});
+//############ ROUTES #################
+const ClientRouter = require("./router/ClientRouter");
+const UserRoleRouter = require("./router/UserRoleRouter");
 
-//Clients by id
 
-app.get("/api/clients/:id", async (req, res) => {
-  let client_id = req.params.id;
-  let data = await ClientServices.getClientById(client_id);
-  res.send(data);
-});
+//######  CLIENT ROUTE ############
 
-//Clients Search By value
-app.get("/api/clients/search/:value", async (req, res) => {
-  let search_value = req.params.value;
-  let data = await ClientServices.getClientsBySearchValue(search_value);
-  res.send(data);
-});
+app.use("/api/clients",ClientRouter);
 
-// Create New Clients
-app.post("/api/clients", async (req, res) => {
-  let cid = req.body.cid;
-  let client_name = req.body.client_name;
-  let client_description = req.body.client_description;
-  // console.log(cid);
-  let data = await ClientServices.CreateClient(
-    cid,
-    client_name,
-    client_description
-  );
-  res.send(data);
-});
+//######  USER ROLE ROUTE #########
+app.use("/api/user_roles",UserRoleRouter);
 
-//Update Clients
-app.put("/api/clients/:id", async (req, res) => {
-  let id = req.params.id;
-  let req_data = req.body.data;
-  let data = await ClientServices.UpdateClient(id, req_data);
-  res.send(data);
-});
-
-//######  CLIENT CONTROLLER ENDS #######
-//######################################
-
-//######################################
-//######  USER ROLE CONTROLLER #########
-
-//Get All User Roles
-app.get("/api/user_roles", async (req, res) => {
-  let data = await UserRoleServices.getUserRoles();
-  res.send(data);
-});
-
-//Get User Role By Id
-app.get("/api/user_roles/:id", async (req, res) => {
-  let id = req.params.id;
-  let data = await UserRoleServices.getUserRoleById(id);
-  res.send(data);
-});
-
-//search User Role By value
-app.get("/api/user_roles/search/:value", async (req, res) => {
-  let id = req.params.value;
-  let data = await UserRoleServices.getUserRolesBySearchValue(id);
-  res.send(data);
-});
-
-//create User Role
-app.post("/api/user_roles", async (req, res) => {
-  let role_name = req.body.role_name;
-  let data = await UserRoleServices.createUserRole(role_name);
-  res.send(data);
-});
-
-//update User Role
-app.put("/api/user_roles/:id", async (req, res) => {
-  let id = req.params.id;
-  let req_data = req.body.data;
-  let res_data = await UserRoleServices.updateUserRole(id, req_data);
-  res.send(res_data);
-});
-
-//######  USER ROLE CONTROLLER ENDS #######
-//#########################################
-
-//#########################################
-//######  USER TYPE CONTROLLER ############
+//######  USER TYPE ROUTE ############
 
 //Get All User Types
 app.get("/api/user_types", async (req, res) => {

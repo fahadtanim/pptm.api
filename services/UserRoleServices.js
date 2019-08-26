@@ -20,7 +20,7 @@ class UserRoleServices {
   }
 
   async createUserRole(data) {
-    return await this.createUserRole(data);
+    return await this.UserRoleRepository.createUserRole(data);
   }
 
   async updateUserRole(id, data) {
