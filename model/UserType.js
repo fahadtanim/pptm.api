@@ -17,9 +17,9 @@ const UserType = sequelize.define(
       allowNull: false
       // allowNull defaults to true
     },
-    type_label_color: {
-      type: Sequelize.STRING(100),
-      allowNull: true
+    type_label_id: {
+      type: Sequelize.INTEGER(11),
+      allowNull: false
     }
   },
   {}

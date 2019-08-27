@@ -23,9 +23,6 @@ class UserTypeRepository {
           {
             type_name: {
               [this.Op.like]: "%" + search_value + "%"
-            },
-            type_label_color: {
-              [this.Op.like]: "%" + search_value + "%"
             }
           }
         ]
@@ -33,10 +30,10 @@ class UserTypeRepository {
     });
   }
 
-  async createUserType(type_name, type_label_color) {
+  async createUserType(type_name, type_label_id) {
     return await this.UserType.create({
       type_name: type_name,
-      type_label_color: type_label_color
+      type_label_id: type_label_id
     });
   }
 
