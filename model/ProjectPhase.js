@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 // const Model = Sequelize.Model;
 const sequelize = require("../data/connection");
-
+const Label = require("../model/Label");
 const ProjectPhase = sequelize.define(
   "project_phase",
   {
@@ -24,5 +24,11 @@ const ProjectPhase = sequelize.define(
   },
   {}
 );
+
+ProjectPhase.belongsTo(Label, {
+  foreignKey: "label_id",
+  targetKey: "label_id",
+  as: "label"
+});
 
 module.exports = ProjectPhase;

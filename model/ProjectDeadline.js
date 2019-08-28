@@ -17,7 +17,7 @@ const ProjectDeadline = sequelize.define(
       allowNull: false
     },
     deadline: {
-      type: sequelize.DATE,
+      type: Sequelize.DATE,
       allowNull: false
     },
     project_id: {

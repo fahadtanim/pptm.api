@@ -9,12 +9,19 @@ const app = express();
 const PORT = process.env.PORT || app_config.port;
 app.use(bodyParser.json());
 
-//############ ROUTES #################
+//############ ROUTER MODULES #################
+//client
 const ClientRouter = require("./router/ClientRouter");
+//user
 const UserRoleRouter = require("./router/UserRoleRouter");
 const UserTypeRouter = require("./router/UserTypeRouter");
 const UserRouter = require("./router/UserRouter");
-
+//project
+const ProjectRoleRouter = require("./router/ProjectRoleRouter");
+const ProjectPhaseRouter = require("./router/ProjectPhaseRouter");
+const DataFilePatternRouter = require("./router/DataFilePatternRouter");
+const FontTypeRouter = require("./router/FontTypeRouter");
+const ProjectDeadlineRouter = require("./router/ProjectDeadlineRouter");
 //######  CLIENT ROUTE ############
 
 app.use("/api/clients", ClientRouter);
@@ -26,13 +33,39 @@ app.use("/api/user_roles", UserRoleRouter);
 
 app.use("/api/user_types", UserTypeRouter);
 
-//######  USER CONTROLLER ############
+//######  USER ROUTE ############
 
 app.use("/api/users", UserRouter);
 
-//SERVER
+//######  PROJECT ROLE ROUTE ############
+
+app.use("/api/project_roles", ProjectRoleRouter);
+
+//######  PROJECT ROLE ROUTE ############
+
+app.use("/api/project_phases", ProjectPhaseRouter);
+
+//######  DATA FILE PATTERN ROUTE ############
+
+app.use("/api/data_file_patterns", DataFilePatternRouter);
+
+//######  FONT TYPE ROUTE ############
+
+app.use("/api/font_types", FontTypeRouter);
+
+//######  PROJECT DEADLINE ROUTE ############
+
+app.use("/api/project_deadlines", ProjectDeadlineRouter);
+
+//#######################################
+//###########  SERVER START  ############
+//#######################################
 
 app.listen(PORT, () => {
   console.log("server started!!");
   //   console.log(app_config.port);
 });
+
+//#######################################
+//###########  SERVER END  ##############
+//#######################################
