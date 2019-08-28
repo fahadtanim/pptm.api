@@ -22,6 +22,8 @@ const ProjectPhaseRouter = require("./router/ProjectPhaseRouter");
 const DataFilePatternRouter = require("./router/DataFilePatternRouter");
 const FontTypeRouter = require("./router/FontTypeRouter");
 const ProjectDeadlineRouter = require("./router/ProjectDeadlineRouter");
+const ProjectEnrolledUserRouter = require("./router/ProjectEnrolledUserRouter");
+
 //######  CLIENT ROUTE ############
 
 app.use("/api/clients", ClientRouter);
@@ -56,6 +58,10 @@ app.use("/api/font_types", FontTypeRouter);
 //######  PROJECT DEADLINE ROUTE ############
 
 app.use("/api/project_deadlines", ProjectDeadlineRouter);
+
+//######  PROJECT ENROLLED USER ROUTE ############
+
+app.use("/api/project_enrolled_users", ProjectEnrolledUserRouter);
 
 //#######################################
 //###########  SERVER START  ############
