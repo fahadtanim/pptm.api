@@ -50,7 +50,7 @@ class ProjectEnrolledUserRepository {
     });
   }
 
-  async createProjectEnrolledUser(project_id, project_name, project_id) {
+  async createProjectEnrolledUser(project_id, project_name, user_id, project_role_id) {
     return await this.ProjectEnrolledUser.create({
       project_id: project_id,
       project_name: project_name,

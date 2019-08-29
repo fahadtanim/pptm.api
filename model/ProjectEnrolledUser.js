@@ -4,8 +4,8 @@ const sequelize = require("../data/connection");
 const User = require("./User");
 const ProjectRole = require("./ProjectRole");
 
-const ProjectEnrolledUsers = sequelize.define(
-  "project_enrolled_users",
+const ProjectEnrolledUser = sequelize.define(
+  "project_enrolled_user",
   {
     // attributes
     project_id: {
@@ -28,15 +28,15 @@ const ProjectEnrolledUsers = sequelize.define(
   },
   {}
 );
-ProjectPhase.belongsTo(User, {
+ProjectEnrolledUser.belongsTo(User, {
   foreignKey: "user_id",
   targetKey: "user_id",
   as: "user"
 });
 
-ProjectPhase.belongsTo(ProjectRole, {
+ProjectEnrolledUser.belongsTo(ProjectRole, {
   foreignKey: "project_role_id",
   targetKey: "project_role_id",
   as: "project_role"
 });
-module.exports = ProjectEnrolledUsers;
+module.exports = ProjectEnrolledUser;
