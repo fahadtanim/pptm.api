@@ -17,6 +17,7 @@ const UserRoleRouter = require("./router/UserRoleRouter");
 const UserTypeRouter = require("./router/UserTypeRouter");
 const UserRouter = require("./router/UserRouter");
 //project
+const ProjectRouter = require("./router/ProjectRouter");
 const ProjectRoleRouter = require("./router/ProjectRoleRouter");
 const ProjectPhaseRouter = require("./router/ProjectPhaseRouter");
 const DataFilePatternRouter = require("./router/DataFilePatternRouter");
@@ -24,10 +25,13 @@ const FontTypeRouter = require("./router/FontTypeRouter");
 const ProjectDeadlineRouter = require("./router/ProjectDeadlineRouter");
 const ProjectEnrolledUserRouter = require("./router/ProjectEnrolledUserRouter");
 
+
+//############## CLIENT RELATED ROUTE #################
 //######  CLIENT ROUTE ############
 
 app.use("/api/clients", ClientRouter);
 
+//############## USER RELATED ROUTE ###################
 //######  USER ROLE ROUTE #########
 app.use("/api/user_roles", UserRoleRouter);
 
@@ -39,6 +43,8 @@ app.use("/api/user_types", UserTypeRouter);
 
 app.use("/api/users", UserRouter);
 
+
+//############## PROJECT RELATED ROUTE ###############
 //######  PROJECT ROLE ROUTE ############
 
 app.use("/api/project_roles", ProjectRoleRouter);
@@ -62,6 +68,12 @@ app.use("/api/project_deadlines", ProjectDeadlineRouter);
 //######  PROJECT ENROLLED USER ROUTE ############
 
 app.use("/api/project_enrolled_users", ProjectEnrolledUserRouter);
+
+//######  PROJECT ROUTE ############
+
+app.use("/api/projects", ProjectRouter);
+
+
 
 //#######################################
 //###########  SERVER START  ############
