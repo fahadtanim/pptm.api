@@ -8,7 +8,14 @@ class ClientRepository {
   }
 
   async getClients() {
-    return await this.Client.findAll();
+    return await this.Client.findAll({});
+  }
+
+  async getClientsWithPaginator(page) {
+    return await this.Client.findAndCountAll({
+      offset: (page - 1) * 10,
+      limit: 10
+    });
   }
 
   async getClientById(client_id) {
@@ -36,6 +43,33 @@ class ClientRepository {
           }
         ]
       }
+    });
+  }
+
+  async getClientsBySearchValueWithPaginator(search_value, page) {
+    console.log(search_value, page);
+    return await this.Client.findAndCountAll({
+      where: {
+        [this.Op.or]: [
+          {
+            cid: {
+              [this.Op.like]: "%" + search_value + "%"
+            }
+          },
+          {
+            client_name: {
+              [this.Op.like]: "%" + search_value + "%"
+            }
+          },
+          {
+            client_description: {
+              [this.Op.like]: "%" + search_value + "%"
+            }
+          }
+        ]
+      },
+      offset: (page - 1) * 10,
+      limit: 10
     });
   }
 

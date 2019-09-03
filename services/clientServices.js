@@ -10,6 +10,11 @@ class ClientServices {
     return data;
   }
 
+  async getClientsWithPaginator(value, page) {
+    let data = await this.ClientRepository.getClientsWithPaginator(value, page);
+    return data;
+  }
+
   async getClientById(client_id) {
     let data = await this.ClientRepository.getClientById(client_id);
     return data;
@@ -18,6 +23,14 @@ class ClientServices {
   async getClientsBySearchValue(search_value) {
     let data = await this.ClientRepository.getClientsBySearchValue(
       search_value
+    );
+    return data;
+  }
+  async getClientsBySearchValueWithPaginator(search_value, page) {
+    console.log(search_value, page);
+    let data = await this.ClientRepository.getClientsBySearchValueWithPaginator(
+      search_value,
+      page
     );
     return data;
   }

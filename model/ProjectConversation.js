@@ -24,14 +24,6 @@ const ProjectConversation = sequelize.define(
       type: Sequelize.INTEGER(11),
       allowNull: false
     },
-    cid: {
-      type: Sequelize.STRING(100),
-      allowNull: false
-    },
-    jid: {
-      type: Sequelize.STRING(100),
-      allowNull: false
-    },
     conversation_text: {
       type: Sequelize.TEXT,
       allowNull: false

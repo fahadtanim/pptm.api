@@ -16,19 +16,24 @@ class ProjectConversationRepository {
     return await this.ProjectConversation.findByPk(id);
   }
 
-  async getProjectConversationByProjectId(project_id) {
+  async getProjectConversationsByProjectId(project_id) {
     return await this.ProjectConversation.findAll({
       where: {
         project_id: project_id
       }
     });
   }
-
-  async getProjectConversationByProjectCidJid(cid,jid) {
+  async getProjectConversationsBySenderId(sender_id) {
     return await this.ProjectConversation.findAll({
       where: {
-        cid: cid,
-        jid: jid
+        sender_id: sender_id
+      }
+    });
+  }
+  async getProjectConversationsByRecieverId(reciever_id) {
+    return await this.ProjectConversation.findAll({
+      where: {
+        reciever_id: reciever_id
       }
     });
   }
@@ -41,24 +46,26 @@ class ProjectConversationRepository {
             conversation_text: {
               [this.Op.like]: "%" + search_value + "%"
             }
-          },
+          }
         ]
       }
     });
   }
 
-  async createProjectConversation(deadline, deadline_name, project_id) {
+  async createProjectConversation(Conversation) {
     return await this.ProjectConversation.create({
-      deadline: deadline,
-      deadline_name: deadline_name,
-      project_id: project_id
+      conversation_text: Conversation.conversation_text,
+      project_id: Conversation.project_id,
+      sender_id: Conversation.sender_id,
+      reciever_id: Conversation.reciever_id,
+      time: Conversation.time
     });
   }
 
   async updateProjectConversation(id, project_deadline) {
     return await this.ProjectConversation.update(project_deadline, {
       where: {
-        deadline_id: id
+        conversation_id: id
       }
     });
   }
