@@ -29,7 +29,7 @@ const ProjectConversationRouter = require("./router/ProjectConversationRouter");
 //############## CLIENT RELATED ROUTE #################
 //######  CLIENT ROUTE ############
 
-app.use("/api/clients", ClientRouter);
+app.use("/api/v1/clients", ClientRouter);
 
 //############## USER RELATED ROUTE ###################
 //######  USER ROLE ROUTE #########
@@ -74,7 +74,7 @@ app.use("/api/project_conversations", ProjectConversationRouter);
 
 //######  PROJECT ROUTE ############
 
-app.use("/api/projects", ProjectRouter);
+app.use("/api/v1/projects", ProjectRouter);
 
 //#######################################
 //###########  SERVER START  ############

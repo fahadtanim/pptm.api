@@ -4,8 +4,13 @@ class ProjectController {
   async Projects(request, response) {
     response.send(await ProjectServices.getProjects());
   }
+  async ProjectsWithPaginator(request, response) {
+    response.send(
+      await ProjectServices.getProjectsWithPaginator(request.params.page)
+    );
+  }
 
-  async ProjectsCid(request, response){
+  async ProjectsCid(request, response) {
     response.send(await ProjectServices.getProjectByCid(request.params.cid));
   }
 
@@ -18,7 +23,9 @@ class ProjectController {
   }
 
   async ProjectName(request, response) {
-    response.send(await ProjectServices.getProjectByProjectName(request.params.project_name));
+    response.send(
+      await ProjectServices.getProjectByProjectName(request.params.project_name)
+    );
   }
 
   async SearchProject(request, response) {
@@ -28,14 +35,12 @@ class ProjectController {
   }
 
   async CreateProject(request, response) {
-    response.send(
-      await ProjectServices.CreateProject(
-        request.body.data
-      )
-    );
+    response.send(await ProjectServices.CreateProject(request.body.data));
   }
   async UpdateProject(request, response) {
-    response.send(await ProjectServices.UpdateProject(request.params.id, request.body.data));
+    response.send(
+      await ProjectServices.UpdateProject(request.params.id, request.body.data)
+    );
   }
 }
 

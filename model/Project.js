@@ -2,6 +2,10 @@ const Sequelize = require("sequelize");
 // const Model = Sequelize.Model;
 const sequelize = require("../data/connection");
 // class project extends Model {}
+const ProjectPhase = require("./ProjectPhase");
+const FontType = require("./FontType");
+const DataFilePattern = require("./DataFilePattern");
+const MessageManagerType = require("./MessageManagerType");
 
 const Project = sequelize.define(
   "project",
@@ -99,5 +103,33 @@ const Project = sequelize.define(
   },
   {}
 );
+
+Project.belongsTo(ProjectPhase, {
+  foreignKey: "current_phase_id",
+  targetKey: "phase_id",
+  as: "current_phase"
+});
+Project.belongsTo(FontType, {
+  foreignKey: "font_type_id",
+  targetKey: "font_type_id",
+  as: "font_type"
+});
+Project.belongsTo(DataFilePattern, {
+  targetKey: "data_file_pattern_id",
+  foreignKey: "input_data_file_pattern_id",
+  as: "input_file_pattern"
+});
+
+Project.belongsTo(DataFilePattern, {
+  targetKey: "data_file_pattern_id",
+  foreignKey: "working_data_file_pattern_id",
+  as: "working_file_pattern"
+});
+
+Project.belongsTo(MessageManagerType, {
+  targetKey: "type_id",
+  foreignKey: "message_manager_type_id",
+  as: "message_manager_type"
+});
 
 module.exports = Project;

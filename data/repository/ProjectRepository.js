@@ -8,7 +8,25 @@ class ProjectRepository {
   }
 
   async getProjects() {
-    return await this.Project.findAll();
+    return await this.Project.findAll({
+      include: [
+        {
+          all: true
+        }
+      ]
+    });
+  }
+
+  async getProjectsWithPaginator(page) {
+    return await this.Project.findAndCountAll({
+      include: [
+        {
+          all: true
+        }
+      ],
+      offset: (page - 1) * 10,
+      limit: 10
+    });
   }
 
   async getProjectById(Project_id) {

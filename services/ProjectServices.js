@@ -9,6 +9,10 @@ class ProjectServices {
     return await this.ProjectRepository.getProjects();
   }
 
+  async getProjectsWithPaginator(page) {
+    return await this.ProjectRepository.getProjectsWithPaginator(page);
+  }
+
   async getProjectById(Project_id) {
     return await this.ProjectRepository.getProjectById(Project_id);
   }
