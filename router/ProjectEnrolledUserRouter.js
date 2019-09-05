@@ -8,7 +8,7 @@ router.get("/", async (request, response) => {
 });
 
 //Get Project Deadline By Id
-router.get("users/:user_id", async (request, response) => {
+router.get("/users/:user_id", async (request, response) => {
   await ProjectEnrolledUserController.ProjectEnrolledUserByUserId(
     request,
     response
@@ -16,14 +16,15 @@ router.get("users/:user_id", async (request, response) => {
 });
 
 //Get Project Deadline By Project Id
-router.get("projects/:project_id", async (request, response) => {
+router.get("/projects/id/:project_id", async (request, response) => {
+  console.log("test");
   await ProjectEnrolledUserController.ProjectEnrolledUserByProjectId(
     request,
     response
   );
 });
 
-router.get("projects/name/:project_name", async (request, response) => {
+router.get("/projects/name/:project_name", async (request, response) => {
   await ProjectEnrolledUserController.ProjectEnrolledUserByProjectName(
     request,
     response

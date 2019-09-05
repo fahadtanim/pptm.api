@@ -6,7 +6,8 @@ const ProjectPhase = require("./ProjectPhase");
 const FontType = require("./FontType");
 const DataFilePattern = require("./DataFilePattern");
 const MessageManagerType = require("./MessageManagerType");
-
+const ProjectDeadline = require("./ProjectDeadline");
+const ProjectEnrolledUser = require("./ProjectEnrolledUser");
 const Project = sequelize.define(
   "project",
   {
@@ -38,6 +39,11 @@ const Project = sequelize.define(
     },
     client_pickup: {
       type: Sequelize.STRING(200),
+      allowNull: true
+      // allowNull defaults to true
+    },
+    live_date: {
+      type: Sequelize.DATE,
       allowNull: true
       // allowNull defaults to true
     },
@@ -117,13 +123,13 @@ Project.belongsTo(FontType, {
 Project.belongsTo(DataFilePattern, {
   targetKey: "data_file_pattern_id",
   foreignKey: "input_data_file_pattern_id",
-  as: "input_file_pattern"
+  as: "input_data_file_pattern"
 });
 
 Project.belongsTo(DataFilePattern, {
   targetKey: "data_file_pattern_id",
   foreignKey: "working_data_file_pattern_id",
-  as: "working_file_pattern"
+  as: "working_data_file_pattern"
 });
 
 Project.belongsTo(MessageManagerType, {
@@ -132,4 +138,12 @@ Project.belongsTo(MessageManagerType, {
   as: "message_manager_type"
 });
 
+Project.hasMany(ProjectDeadline, {
+  foreignKey: "project_id",
+  as: "project_deadlines"
+});
+// Project.hasMany(ProjectEnrolledUser, {
+//   foreignKey: "project_id",
+//   as: "project_enrolled_users"
+// });
 module.exports = Project;

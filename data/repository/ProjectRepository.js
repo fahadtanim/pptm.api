@@ -29,8 +29,17 @@ class ProjectRepository {
     });
   }
 
-  async getProjectById(Project_id) {
-    return await this.Project.findByPk(Project_id);
+  async getProjectById(project_id) {
+    return await this.Project.findOne({
+      include: [
+        {
+          all: true
+        }
+      ],
+      where: {
+        project_id: project_id
+      }
+    });
   }
 
   async getProjectsByCid(cid) {

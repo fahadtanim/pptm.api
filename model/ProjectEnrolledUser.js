@@ -28,6 +28,9 @@ const ProjectEnrolledUser = sequelize.define(
   },
   {}
 );
+
+ProjectEnrolledUser.removeAttribute("id");
+
 ProjectEnrolledUser.belongsTo(User, {
   foreignKey: "user_id",
   targetKey: "user_id",

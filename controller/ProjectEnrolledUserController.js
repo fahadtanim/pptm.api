@@ -6,7 +6,8 @@ class ProjectEnrolledUserController {
     this.ProjectEnrolledUserServices = ProjectEnrolledUserServices;
   }
   async ProjectEnrolledUsers(request, response) {
-    response.send(ProjectEnrolledUserServices.getProjectEnrolledUsers());
+    console.log("came");
+    response.send(await ProjectEnrolledUserServices.getProjectEnrolledUsers());
   }
 
   //Get Project Enrolled User By Id

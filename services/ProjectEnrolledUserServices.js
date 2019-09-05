@@ -6,6 +6,7 @@ class ProjectEnrolledUserServices {
   }
 
   async getProjectEnrolledUsers() {
+    console.log("enrolled repo");
     return await this.ProjectEnrolledUserRepository.getProjectEnrolledUsers();
   }
 

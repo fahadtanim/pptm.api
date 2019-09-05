@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 // const Model = Sequelize.Model;
 const sequelize = require("../data/connection");
+const Project = require("./Project");
 
 const ProjectDeadline = sequelize.define(
   "project_deadline",
@@ -27,5 +28,10 @@ const ProjectDeadline = sequelize.define(
   },
   {}
 );
+
+// ProjectDeadline.belongsTo(Project, {
+//   foreignKey: "project_id",
+//   targetKey: "project_id"
+// });
 
 module.exports = ProjectDeadline;

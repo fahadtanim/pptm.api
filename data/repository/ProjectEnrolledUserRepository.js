@@ -9,11 +9,23 @@ class ProjectEnrolledUserRepository {
   }
 
   async getProjectEnrolledUsers() {
-    return await this.ProjectEnrolledUser.findAll();
+    console.log("came repo");
+    return await this.ProjectEnrolledUser.findAll({
+      include: [
+        {
+          all: true
+        }
+      ]
+    });
   }
 
   async getProjectEnrolledUserByProjectId(project_id) {
     return await this.ProjectEnrolledUser.findAll({
+      include: [
+        {
+          all: true
+        }
+      ],
       where: {
         project_id: project_id
       }
@@ -50,7 +62,12 @@ class ProjectEnrolledUserRepository {
     });
   }
 
-  async createProjectEnrolledUser(project_id, project_name, user_id, project_role_id) {
+  async createProjectEnrolledUser(
+    project_id,
+    project_name,
+    user_id,
+    project_role_id
+  ) {
     return await this.ProjectEnrolledUser.create({
       project_id: project_id,
       project_name: project_name,
@@ -63,7 +80,7 @@ class ProjectEnrolledUserRepository {
     return await this.ProjectEnrolledUser.update(project_enrolled_user, {
       where: {
         project_id: project_id,
-        user_id : user_id
+        user_id: user_id
       }
     });
   }

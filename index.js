@@ -26,6 +26,7 @@ const ProjectDeadlineRouter = require("./router/ProjectDeadlineRouter");
 const ProjectEnrolledUserRouter = require("./router/ProjectEnrolledUserRouter");
 const ProjectConversationRouter = require("./router/ProjectConversationRouter");
 
+// console.log(ProjectEnrolledUserRouter);
 //############## CLIENT RELATED ROUTE #################
 //######  CLIENT ROUTE ############
 
@@ -65,9 +66,7 @@ app.use("/api/font_types", FontTypeRouter);
 app.use("/api/project_deadlines", ProjectDeadlineRouter);
 
 //######  PROJECT ENROLLED USER ROUTE ############
-
-app.use("/api/project_enrolled_users", ProjectEnrolledUserRouter);
-
+app.use("/api/v1/project_enrolled_users", ProjectEnrolledUserRouter);
 //######  PROJECT CONVERSATION ROUTE ############
 
 app.use("/api/project_conversations", ProjectConversationRouter);
